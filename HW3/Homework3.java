@@ -22,7 +22,7 @@ public class Homework3 {
     // Fill in your solution here.  (Ours is twelve lines long, not counting
     // blank lines or lines already present in this file.)
     
-      int size =0; 
+      int size = 0; 
       for (int i=0; i<ints.length-1;i++){
           if (ints[i+1]!= ints[i]){
           size++;          
@@ -30,7 +30,7 @@ public class Homework3 {
           }
       }
        for (int i = size+1; i<ints.length;i++){
-          ints[i]=-1;
+          ints[i] = -1;
           }
   }
    /*      
