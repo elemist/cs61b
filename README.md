@@ -1,3 +1,3 @@
 # cs61b
 Berkeley CS 61b
-Homework and lab solutions by Yuan Yuan
+Homework and lab solutions
