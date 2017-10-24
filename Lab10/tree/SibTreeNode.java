@@ -140,35 +140,29 @@ class SibTreeNode extends TreeNode {
   public void insertChild(Object item, int c) throws InvalidNodeException {
     // FILL IN YOUR SOLUTION TO PART II HERE.
       if (isValidNode()) {
+          SibTreeNode insertNode = new SibTreeNode(myTree,item);
+          insertNode.parent = this;
+          SibTreeNode cur = firstChild;
+          myTree.size++;
           if (firstChild == null) {// this node does not have child
-              SibTreeNode insNode = new SibTreeNode(myTree,item);
-              insNode.parent = this;
-              firstChild = insNode;
+              firstChild = insertNode;
           } else if ( c > this.children() ) {
-              SibTreeNode cur = firstChild;
               while (cur.nextSibling != null) {
                   cur = cur.nextSibling;
               }
-              cur.nextSibling = new SibTreeNode(myTree,item);
-              cur.nextSibling.parent = this;
+              cur.nextSibling = insertNode;
           } else if (c <= 1) {
-              SibTreeNode insertNode = new SibTreeNode(myTree,item);
-              insertNode.parent = this;
               insertNode.nextSibling = firstChild;
               firstChild = insertNode;
           } else {
-              SibTreeNode inNode = new SibTreeNode(myTree,item);
-              inNode.parent = this;
-              SibTreeNode curNode = firstChild;
               c--;
-              while (curNode != null && c>1) {
-                  curNode = curNode.nextSibling;
+              while (cur != null && c>1) {
+                  cur = cur.nextSibling;
                   c--;
               }
-              inNode.nextSibling = curNode.nextSibling;
-              curNode.nextSibling = inNode;
+              insertNode.nextSibling = cur.nextSibling;
+              cur.nextSibling = insertNode;
           }
-          myTree.size++;
       } else {
           throw new InvalidNodeException();
       }
